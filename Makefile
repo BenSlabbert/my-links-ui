@@ -1,10 +1,12 @@
 #!make
 
-.PHONY: build install run fmt clean cleanBuild
+.PHONY: npmBuild dockerBuild install run fmt clean cleanBuild
 
-build: install fmt
+npmBuild: install fmt
 	@npm run build
-	@docker build . -i mylinks/ui
+
+dockerBuild:
+	@docker build . -t mylinks/ui
 
 install:
 	@npm install
